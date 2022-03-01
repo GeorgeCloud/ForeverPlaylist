@@ -1,1 +1,1 @@
-web: gunicorn app:music_app
+web: gunicorn -w 1 app:app --preload

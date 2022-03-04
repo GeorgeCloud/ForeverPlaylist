@@ -17,4 +17,12 @@
     <a href="/create_playlist">create new playlist</a>
   {% endif %}
 
+  <ul style="list-style: none;">
+    {% for playlist in playlists %}
+      <li>
+        {% include 'partials/single_playlist.html' %}
+      </li>
+    {% endfor %}
+  </ul>
+
 {% endblock %}

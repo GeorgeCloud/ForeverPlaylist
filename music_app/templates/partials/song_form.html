@@ -1,0 +1,22 @@
+<form method="POST">
+  {{ form.csrf_token }}
+  <h5 class="card-title">
+    {{ form.title.label }}
+    {{ form.title }}
+
+    {% for error in form.title.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+  </h5>
+
+  <p class="card-text">
+    {{ form.video_url.label }}
+    {{ form.video_url }}
+
+    {% for error in form.video_url.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+  </p>
+
+  {{ form.submit(class_="btn btn-primary") }}
+</form>

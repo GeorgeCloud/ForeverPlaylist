@@ -8,3 +8,9 @@ class PlaylistForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Create Playlist')
+
+
+class SongEntryForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    video_url = StringField('Video URL', validators=[DataRequired()])
+    submit = SubmitField('Add Song')

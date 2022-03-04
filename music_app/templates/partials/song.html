@@ -1,0 +1,15 @@
+<div class="card" style="width: 18rem;">
+  <iframe src="https://www.youtube.com/embed/{{ song.video_url }}"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+  </iframe>
+  <div class="card-body">
+    <h5 class="card-title">
+    <b>{{ song.title }}</b>
+    </h5>
+    <a href="/playlist/{{ playlist.id }}" class="btn btn-primary">
+      Visit
+    </a>
+  </div>
+</div>

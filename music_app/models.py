@@ -34,9 +34,23 @@ class Playlist(db.Model):
     description = db.Column(db.String(200), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', back_populates='playlists')
+    songs = db.relationship('SongEntry', back_populates='playlist')
 
     def __str__(self):
         return f'<Playlist: {self.title}>'
 
     def __repr__(self):
         return f'<Playlist: {self.title}>'
+
+class SongEntry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(80), nullable=False)
+    video_url = db.Column(db.String(80), nullable=False)
+    playlist_id = db.Column(db.Integer, db.ForeignKey('playlist.id'), nullable=False)
+    playlist = db.relationship('Playlist', back_populates='songs')
+
+    def __str__(self):
+        return f'<Song: {self.title}>'
+
+    def __repr__(self):
+        return f'<Song: {self.title}>'

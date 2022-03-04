@@ -16,7 +16,7 @@
   {% endif %}
 
   <div class="container">
-    {% for song_row in playlist.songs[:3] | batch(3, '&nbsp;') %}
+    {% for song_row in playlist.songs | batch(3, '&nbsp;') %}
     <div class="row">
       {% for song in song_row %}
         <div class="col">

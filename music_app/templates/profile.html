@@ -13,15 +13,19 @@
       <a href="/create_playlist">create new playlist</a>
     {% endif %}
 
-    {% for playlist_row in user.playlists[:3] | batch(3, '&nbsp;') %}
+    {{user.playlists}}
+
+    {%- for playlist_row in user.playlists[:-1] | batch(3, '&nbsp;') %}
       <div class="row">
-        {% for playlist in playlist_row %}
-          <div class="col">
-            {% include 'partials/single_playlist.html' %}
-          </div>
-        {% endfor %}
+        {%- for playlist in playlist_row %}
+          {%- if playlist %}
+            <div class="col">
+              {% include 'partials/single_playlist.html' %}
+            </div>
+          {%- endif %}
+        {%- endfor %}
       </div>
-    {% endfor %}
+    {%- endfor %}
   </div>
 
 {% endblock %}

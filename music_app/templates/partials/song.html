@@ -6,9 +6,10 @@
   </iframe>
   <div class="card-body">
     <h5 class="card-title">
-    <b>{{ song.title }}</b>
+      <b>{{ song.title }}</b>
     </h5>
-    <a href="/playlist/{{ playlist.id }}" class="btn btn-primary">
+
+    <a href="https://www.youtube.com/watch?v={{ song.video_url }}" class="btn btn-primary">
       Visit
     </a>
   </div>

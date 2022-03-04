@@ -27,6 +27,11 @@ def profile(username):
     user = User.query.filter_by(username=username).first()
     return render_template('profile.html', user=user)
 
+@main.route('/users')
+def index_users():
+    all_users = User.query.all()
+    return render_template('users_index.html', users=all_users)
+
 @main.route('/create_playlist', methods=['GET', 'POST'])
 @login_required
 def create_playlist():

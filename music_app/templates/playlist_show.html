@@ -3,22 +3,28 @@
 
   <h1>Playlist: {{playlist.title}}</h1>
 
-  <ul style="list-style: none;">
-    <li>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          {% include 'partials/song_form.html' %}
-        </div>
-      </div>
-    </li>
-  </ul>
-
-  <ul style="list-style: none;">
-    {% for song in playlist.songs %}
+  {% if current_user == playlist.user %}
+    <ul style="list-style: none;">
       <li>
-        {% include 'partials/song.html' %}
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            {% include 'partials/song_form.html' %}
+          </div>
+        </div>
       </li>
+    </ul>
+  {% endif %}
+
+  <div class="container">
+    {% for song_row in playlist.songs[:3] | batch(3, '&nbsp;') %}
+    <div class="row">
+      {% for song in song_row %}
+        <div class="col">
+          {% include 'partials/song.html' %}
+        </div>
+      {% endfor %}
+    </div>
     {% endfor %}
-  </ul>
+  </div>
 
 {% endblock %}

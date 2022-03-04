@@ -1,28 +1,24 @@
 {% extends 'base.html' %}
 
 {% block body %}
+  <div class="container">
+    <h1>Welcome To Forever Playlist</h1>
 
-  <h2>Users</h2>
+    <h3>All Playlists</h3>
 
-  <ul>
-    {% for user in all_users %}
-      <li><a href="/profile/{{ user.username }}">{{ user.username }}</a></li>
+    {% if current_user.is_authenticated %}
+      <a href="/create_playlist">create new playlist</a>
+    {% endif %}
+
+    {% for playlist_row in playlists[:3] | batch(3, '&nbsp;') %}
+      <div class="row">
+        {% for playlist in playlist_row %}
+          <div class="col">
+            {% include 'partials/single_playlist.html' %}
+          </div>
+        {% endfor %}
+      </div>
     {% endfor %}
-  </ul>
-
-  logged_in: {{current_user.is_authenticated}}
-
-  <h2>Playlists</h2>
-  {% if current_user.is_authenticated %}
-    <a href="/create_playlist">create new playlist</a>
-  {% endif %}
-
-  <ul style="list-style: none;">
-    {% for playlist in playlists %}
-      <li>
-        {% include 'partials/single_playlist.html' %}
-      </li>
-    {% endfor %}
-  </ul>
+  </div>
 
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+
+  <h1>Playlist: {{playlist.title}}</h1>
+
+  <ul style="list-style: none;">
+    {% for song in playlist.songs %}
+      <li>
+        <div class="card" style="width: 18rem;">
+          <iframe src="https://www.youtube.com/embed/xhHg5XGPCM8"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+          </iframe>
+          <div class="card-body">
+            <h5 class="card-title">
+            {{ song.title }}
+            </h5>
+            <p class="card-text">
+            {{ song.description }}
+            </p>
+            <a href="/playlist/{{ playlist.id }}" class="btn btn-primary">
+              Open Playlist
+            </a>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+
+
+{% endblock %}

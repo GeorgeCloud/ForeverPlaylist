@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
-{% block content %}
+{% block body %}
 
-<h1>Log In</h1>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">Sign In</h3>
+      <p class="card-text">
+        Welcome to back to ForeverPlaylist.
+      </p>
 
-  <form method="POST">
-    {{ form.csrf_token }}
-    <fieldset>
-      <legend>Hello</legend>
+      <form method="POST">
+        {{ form.csrf_token }}
 
-      {{ form.username.label }}
-      {{ form.username }}
-      {% for error in form.username.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
+        {{ form.username.label }}
+        {{ form.username }}
+        {% for error in form.username.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
 
-      {{ form.password.label }}
-      {{ form.password }}
-      {% for error in form.password.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
+        {{ form.password.label }}
+        {{ form.password }}
+        {% for error in form.password.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
 
-      {{ form.submit }}
-    </fieldset>
-  </form>
+        {{ form.submit }}
+      </form>
+    </div>
+  </div>
 
 {% endblock %}

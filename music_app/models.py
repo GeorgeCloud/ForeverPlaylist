@@ -19,6 +19,24 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False, unique=True)
     password = db.Column(db.String(200), nullable=False)
+    playlists = db.relationship('Playlist', back_populates='user')
+
+    def __str__(self):
+        return f'<User: {self.username}>'
 
     def __repr__(self):
         return f'<User: {self.username}>'
+
+
+class Playlist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', back_populates='playlists')
+
+    def __str__(self):
+        return f'<Playlist: {self.title}>'
+
+    def __repr__(self):
+        return f'<Playlist: {self.title}>'

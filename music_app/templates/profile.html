@@ -1,9 +1,32 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
 
-<p>
-Welcome to {{ username }}'s profile.
-</p>
+  <h1>
+    Welcome to {{ user.username }}'s profile.
+  </h1>
+
+  <h3>Playlists</h3>
+
+  <ul style="list-style: none;">
+    {% for playlist in user.playlists %}
+      <li>
+        <div class="card" style="width: 18rem;">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ playlist.title }}
+            </h5>
+            <p class="card-text">
+              {{ playlist.description }}
+            </p>
+            <a href="/playlists/{{ playlist.id }}" class="btn btn-primary">
+              Open Playlist
+            </a>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
 
 {% endblock %}

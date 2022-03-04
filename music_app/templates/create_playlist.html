@@ -3,24 +3,23 @@
 
   <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h3 class="card-title">Sign Up</h3>
+      <h3 class="card-title">Create Playlist</h3>
       <p class="card-text">
-        Welcome to ForeverPlaylist. Here you can create playlist with your
-        friends and share them.
+        Add a title and give your playlist a description.
       </p>
 
       <form method="POST">
         {{ form.csrf_token }}
 
-          {{ form.username.label }}
-          {{ form.username }}
-          {% for error in form.username.errors %}
+          {{ form.title.label }}
+          {{ form.title }}
+          {% for error in form.title.errors %}
             <li>{{ error }}</li>
           {% endfor %}
 
-          {{ form.password.label }}
-          {{ form.password }}
-          {% for error in form.password.errors %}
+          {{ form.description.label }}
+          {{ form.description }}
+          {% for error in form.description.errors %}
             <li>{{ error }}</li>
           {% endfor %}
 

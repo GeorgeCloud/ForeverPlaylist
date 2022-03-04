@@ -10,7 +10,7 @@
       <a href="/create_playlist">create new playlist</a>
     {% endif %}
 
-    {% for playlist_row in playlists[:3] | batch(3, '&nbsp;') %}
+    {% for playlist_row in playlists | batch(3) -%}
       <div class="row">
         {% for playlist in playlist_row %}
           <div class="col">
